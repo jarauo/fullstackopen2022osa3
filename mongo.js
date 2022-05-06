@@ -8,12 +8,13 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema)
 
 if (process.argv.length < 3) {
-    console.log('give password as argument')
+    console.log('give username and password as arguments')
     process.exit(1)
 }
 
-const password = process.argv[2]
-const url = `mongodb+srv://Chorium:${password}@cluster0.jmqoj.mongodb.net/phonebook?retryWrites=true&w=majority`
+const user = process.argv[2]
+const password = process.argv[3]
+const url = `mongodb+srv://${user}:${password}@cluster0.jmqoj.mongodb.net/phonebook?retryWrites=true&w=majority`
 mongoose.connect(url)
 
 if (process.argv.length === 3) {
